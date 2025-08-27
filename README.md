@@ -1,5 +1,39 @@
 # Target Vector API Fullstack
 
+<p align="center">
+    <a href="https://github.com/Voidware-Prohibited/targetvector-api-fullstack/commits/master">
+    <img src="https://vercelbadge.vercel.app/api/Voidware-Prohibited/targetvector-api-fullstack?plastic"
+         alt="Build Status">
+    </a>
+    <a href="https://github.com/Voidware-Prohibited/targetvector-api-fullstack/commits/master">
+    <img src="https://img.shields.io/github/last-commit/Voidware-Prohibited/targetvector-api-fullstack.svg?style=flat-square&logo=github&logoColor=white"
+         alt="GitHub last commit">
+    </a>
+    <a href="https://github.com/Voidware-Prohibited/targetvector-api-fullstack/issues">
+    <img src="https://img.shields.io/github/issues-raw/Voidware-Prohibited/targetvector-api-fullstack.svg?style=flat-square&logo=github&logoColor=white"
+         alt="GitHub issues">
+    </a>
+    <a href="https://github.com/Voidware-Prohibited/targetvector-api-fullstack/pulls">
+    <img src="https://img.shields.io/github/issues-pr-raw/Voidware-Prohibited/targetvector-api-fullstack.svg?style=flat-square&logo=github&logoColor=white"
+         alt="GitHub pull requests">
+    </a>
+    <a href="https://github.com/Voidware-Prohibited/targetvector-api-fullstack/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg"
+         alt="MIT License">
+    </a>
+    <a href="https://github.com/sponsors/colorindarkness">
+    <img src="https://img.shields.io/github/sponsors/colorindarkness.svg?style=flat-square&logo=github&logoColor=white"
+         alt="Become a Sponsor">
+    </a>
+    <a href="https://www.patreon.com/colorindarkness">
+    <img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Dcolorindarkness%26type%3Dpatrons&style=flat"
+         alt="Become a Patron">
+    </a>
+    <a href="https://www.x.com/voidwarex">
+    <img alt="X (formerly Twitter) Follow" src="https://img.shields.io/twitter/follow/voidwarex?style=flat&logo=x">
+     </a>
+</p>
+
 Fullstack API with Management Dashboard focused on Performance, Scalability and Modularity.
 
 ## ✨ Features
@@ -18,8 +52,10 @@ Fullstack API with Management Dashboard focused on Performance, Scalability and 
 - **TanStack Query** - Powerful data fetching and state management
 - **shadcn/ui** - Beautiful and accessible UI components
 - **Tailwind CSS v4** - Modern utility-first CSS framework
+- **OAuth2** - Service-based Authentication Strategies.
 - **il8n** - a powerful internationalization framework
-- **Vite** - Fast build tool and development server
+- **Vite** - Fast build tool and development server.
+- **Vitest** - Next generation testing framework powered by Vite.
 
 ### 📚 Backend
 
@@ -27,15 +63,25 @@ Fullstack API with Management Dashboard focused on Performance, Scalability and 
 - **MikroORM/Postgres** - TypeScript ORM for Node.js.
 - **Axios** - Promise based HTTP client for the browser and node.js.
 - **HMAC** - Cryptographically secured API transactions.
+- **Vitest** - Next generation testing framework powered by Vite.
 
 ## 🚀 Quick Start
 
 1. **Connect to Database**
+
+**Create '.env' file**
+
+In the root of the project, create a file named .env and define the necessary environment variables for your database connection. For example:
 ```
-Env file
+DB_DRIVER=postgresql
+DB_HOST=localhost
+DB_PORT=5432
+DB_USER=your_user
+DB_PASSWORD=your_password
+DB_NAME=your_database_name
 ```
 
-**Setup OAuth**
+2. **Setup OAuth**
 
 **Install API Secrets**
 
@@ -62,7 +108,7 @@ Env file
 ```
 client/
 ├──src/
-    ├── components/          # Reusable UI components
+    ├── components/         # Reusable UI components
     │   ├── app-sidebar/    # Sidebar navigation components
     │   └── ui/             # shadcn/ui components
     ├── hooks/              # Custom React hooks
@@ -70,6 +116,8 @@ client/
     ├── routes/             # Route components and layouts
     └── styles/             # Global styles and CSS
 server/
+├──src/
+    ├── routes/             # API Routes
 
 ```
 
