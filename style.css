@@ -1,6 +1,6 @@
-.no-decoration, .no-decoration:hover {
-    text-decoration: none;
+.no-decoration, .no-decoration:hover, .no-decoration:visited, .no-decoration:active {
+    text-decoration: none !important;
 }
 .text-center {
-    text-align: center;
+    text-align: center !important;
 }
