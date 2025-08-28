@@ -37,7 +37,44 @@ prompt_provider_details() {
 
 # --- Main script ---
 
-echo "--- OAuth2 and HMAC Configuration Script ---"
+#    ░▒▓████████▓▒░▒▓██████▓▒░░▒▓███████▓▒░ ░▒▓██████▓▒░░▒▓████████▓▒░▒▓████████▓▒░      ░▒▓█▓▒░░▒▓█▓▒░▒▓████████▓▒░▒▓██████▓▒░▒▓████████▓▒░▒▓██████▓▒░░▒▓███████▓▒░
+#       ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░          ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░
+#       ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░      ░▒▓█▓▒░         ░▒▓█▓▒░           ░▒▓█▓▒▒▓█▓▒░░▒▓█▓▒░     ░▒▓█▓▒░        ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░
+#       ░▒▓█▓▒░  ░▒▓████████▓▒░▒▓███████▓▒░░▒▓█▓▒▒▓███▓▒░▒▓██████▓▒░    ░▒▓█▓▒░           ░▒▓█▓▒▒▓█▓▒░░▒▓██████▓▒░░▒▓█▓▒░        ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓███████▓▒░
+#       ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░            ░▒▓█▓▓█▓▒░ ░▒▓█▓▒░     ░▒▓█▓▒░        ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░
+#       ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░         ░▒▓█▓▒░            ░▒▓█▓▓█▓▒░ ░▒▓█▓▒░     ░▒▓█▓▒░░▒▓█▓▒░ ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░
+#       ░▒▓█▓▒░  ░▒▓█▓▒░░▒▓█▓▒░▒▓█▓▒░░▒▓█▓▒░░▒▓██████▓▒░░▒▓████████▓▒░  ░▒▓█▓▒░             ░▒▓██▓▒░  ░▒▓████████▓▒░▒▓██████▓▒░  ░▒▓█▓▒░   ░▒▓██████▓▒░░▒▓█▓▒░░▒▓█▓▒░
+#
+#
+
+echo "--- API Setup Script ---"
+
+# Menu for Mode
+echo "First, we need to set the Mode."
+PS3='Choose a Mode: '
+# Define the options in an array
+options=("Dedicated Server" "Master Server")
+
+# Use select to present the options and capture the user's choice
+select choice in "${options[@]}"; do
+    case $choice in
+        "Dedicated Server")
+            selected_option="A"
+            echo "You selected: Dedicated Server"
+            break # Exit the select loop
+            ;;
+        "Option B")
+            selected_option="B"
+            echo "You selected: Master Server"
+            break # Exit the select loop
+            ;;
+        *)
+            echo "Invalid option. Please enter 1 or 2."
+            ;;
+    esac
+done
+
+echo "The chosen option saved in 'selected_option' variable is: $selected_option"
 
 # Prompt for HMAC secret (hidden input)
 echo "First, we need to set the global HMAC secret."
@@ -48,7 +85,7 @@ echo ""
 
 # Menu for OAuth2 providers
 PS3='Choose an OAuth2 provider to configure (or "Done" to finish): '
-options=("GitHub" "Google" "Facebook" "Add Another" "Done")
+options=("GitHub" "Google" "Twitch" "Add Another" "Done")
 
 while true; do
   select opt in "${options[@]}"; do
@@ -86,6 +123,9 @@ done
 echo "-------------------------------------"
 echo "Generated Configuration"
 echo "-------------------------------------"
+echo "MODE=\"$selected_option\"" > config.env
+echo "MODE: ${selected_option}"
+echo "" >> config.env
 echo "HMAC_SECRET=\"$hmac_secret\"" > config.env
 echo "HMAC_SECRET: [HIDDEN]"
 echo "" >> config.env
